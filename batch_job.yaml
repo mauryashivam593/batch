@@ -13,6 +13,6 @@ spec:
         - /bin/sh
         - -c
         - |
-          echo "scripts in /hello-world-scripts"
+          echo "Running the R script"
           Rscript /usr/local/src/myscripts/myscript.R
       restartPolicy: Never
