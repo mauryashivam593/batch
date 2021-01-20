@@ -1,0 +1,18 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sample-app
+spec:
+  template:
+    spec:
+      containers:
+      - name: sample-app
+        image: us.gcr.io/qp-cna-demo-2020-12/sample-app:latest
+        imagePullPolicy: Always
+        command:
+        - /bin/sh
+        - -c
+        - |
+          echo "scripts in /hello-world-scripts"
+          Rscript /usr/local/src/myscripts/myscript.R
+      restartPolicy: Never
