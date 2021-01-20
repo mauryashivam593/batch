@@ -1,0 +1,21 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: cron-app
+spec:
+  schedule: "*/1 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: cron-app
+            image: us.gcr.io/qp-cna-demo-2020-12/sample-app:latest
+            imagePullPolicy: IfNotPresent
+            args:
+            - /bin/sh
+            - -c
+            - |
+              echo "Running cron scripts"
+              Rscript /usr/local/src/myscripts/myscript.R
+          restartPolicy: OnFailure
